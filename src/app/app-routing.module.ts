@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () => import ('./auth/auth.module').then( m => m.AuthModule)
   },
   {
-    path: 'herores',
+    path: 'heroes',
     loadChildren: () => import ('./heroes/heroes.module').then( m => m.HeroesModule )
   },
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '404'
+    redirectTo: ''
   }
 ];
 
