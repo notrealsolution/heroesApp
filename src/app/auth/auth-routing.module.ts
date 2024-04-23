@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-const routes: Routes = [];
+import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
+// localhost:4200/auth/
+const routes: Routes = [
+  {
+    path:'',
+    component: LayoutPageComponent
+  }
+];
 
 @NgModule({
   imports: [ RouterModule.forChild( routes ) ],
