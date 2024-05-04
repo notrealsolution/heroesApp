@@ -13,6 +13,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { MaterialModule } from '../material/material.module';
 import { CardComponent } from './components/card/card.component';
 import { HeroImagePipe } from './pipes/heroImage.pipe';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HeroImagePipe } from './pipes/heroImage.pipe';
     CardComponent,
 
     //Pipes
-    HeroImagePipe
+    HeroImagePipe,
+      ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
