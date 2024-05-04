@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -81,14 +81,25 @@ export class NewPageComponent implements OnInit{
     const dialogRef = this.dialog.open( ConfirmDialogComponent, {
       data: this.heroForm.value
     });
-    dialogRef.afterClosed().subscribe( result => {
-      console.log( result );
-      if( !result ) return;
-      this.heroService.deleteHeroById( this.currentHero.id )
-        .subscribe( wasDelete => {
-            if( wasDelete ) this.router.navigate(['/heroes/list']);
-        });
+
+    dialogRef.afterClosed()
+      .pipe(
+        filter( ( result:boolean ) => result ),
+        switchMap( () => this.heroService.deleteHeroById( this.currentHero.id )),
+        filter ( ( wasDelete:boolean ) => wasDelete )
+      )
+      .subscribe( () => {
+        this.router.navigate(['/heroes'])
     })
+
+    // dialogRef.afterClosed().subscribe( result => {
+    //   console.log( result );
+    //   if( !result ) return;
+    //   this.heroService.deleteHeroById( this.currentHero.id )
+    //     .subscribe( wasDelete => {
+    //         if( wasDelete ) this.router.navigate(['/heroes/list']);
+    //     });
+    // })
   }
 
   showSnackbar( message: string ): void {
