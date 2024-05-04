@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of } from 'rxjs';
+
+
 import { map } from 'rxjs/operators';
 import { environments } from 'environments/environments';
 import { Hero } from '../interfaces/hero.interface';
@@ -23,6 +25,9 @@ export class HeroesService {
     );
   }
   addHero( hero: Hero): Observable<Hero> {
+    // TODO: Ver por que JSON server no me genera mi id
+    const id = Math.random().toString(36).substring(2, 10);
+    hero.id = id;
     return this.http.post<Hero>(`${ this.baseUrl }/heroes`, hero);
   }
   updateHero( hero: Hero): Observable<Hero> {
