@@ -84,8 +84,10 @@ export class NewPageComponent implements OnInit{
     dialogRef.afterClosed().subscribe( result => {
       console.log( result );
       if( !result ) return;
-      this.heroService.deleteHeroById( this.currentHero.id );
-      this.router.navigate(['/heroes/list'])
+      this.heroService.deleteHeroById( this.currentHero.id )
+        .subscribe( wasDelete => {
+            if( wasDelete ) this.router.navigate(['/heroes/list']);
+        });
     })
   }
 
