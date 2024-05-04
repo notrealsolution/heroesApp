@@ -166,6 +166,15 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "id": "elp-2",
+      "superhero": "El perrucho",
+      "publisher": "DC Comics",
+      "alter_ego": "El perruchon",
+      "first_appearance": "002364 ad",
+      "characters": "unknow",
+      "alt_imag": "https://i.pinimg.com/236x/e6/4a/7e/e64a7e974bf54447b888400e702aa076.jpg"
     }
   ]
 }
